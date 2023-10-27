@@ -18,5 +18,8 @@ public class FizzBuzz {
         return res;
     }
 
+    public static void main(String[] args) {
+        fizzBuzz(15);
+    }
 
 }
