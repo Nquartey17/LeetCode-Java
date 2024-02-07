@@ -17,18 +17,33 @@ public class GetIntersectionNode {
             copyB = copyB.next;
         }
 
-        if (countA == countB) {
-
+        //start at the same point
+        int sumDifference = 0;
+        if (countB > countA) {
+            sumDifference = countB - countA;
+            while (sumDifference > 0) {
+                headB = headB.next;
+                sumDifference = sumDifference - 1;
+            }
+        }
+        else if (countA > countB) {
+            sumDifference = countA - countB;
+            while (sumDifference > 0) {
+                headA = headA.next;
+                sumDifference = sumDifference - 1;
+            }
         }
 
-        else {
-            int start = Math.max(countA, countB) - Math.min(countA, countB);
-
+        boolean intersectionNode = false;
+        while (headA.next != null) {
+            if (headA.equals(headB)) {
+                return headA;
+            }
+            headA = headA.next;
+            headB = headB.next;
         }
 
-
-
-        return headA;
+        return null;
     }
 
     public static void main(String[] args) {
@@ -48,7 +63,7 @@ public class GetIntersectionNode {
         B1.next = B2; B2.next = B3; B3.next = B4;
 
         System.out.println(getIntersectionNode(A1, B1));
-        System.out.println(A2.next.next.equals(B3.next.next));
+
 
 
     }
