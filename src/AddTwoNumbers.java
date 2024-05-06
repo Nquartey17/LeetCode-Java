@@ -8,6 +8,15 @@ public class AddTwoNumbers {
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
+    public static int reverse(int input) {
+        int reversed = 0;
+        while(input != 0) {
+            int digit = input % 10;
+            reversed = (reversed * 10) + digit;
+            input /= 10;
+        }
+        return reversed;
+    }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int num1 = 0;
@@ -25,9 +34,15 @@ public class AddTwoNumbers {
         }
         //Add last value
         num2 = (num2 * 10) + l2.val;
+
+        //reverse the numbers before adding
+        num1 = reverse(num1);
+        num2 = reverse(num2);
+
+        //total of both values
         int sum = num1 + num2;
 
-        //Remove the first int and add it to list node
+        //Remove the last int and add it to list node
         int firstNum = sum % 10;
         sum /= 10;
         ListNode ans = new ListNode(firstNum);
