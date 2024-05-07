@@ -8,10 +8,10 @@ public class AddTwoNumbers {
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
-    public static int reverse(int input) {
-        int reversed = 0;
+    public static long reverse(long input) {
+        long reversed = 0;
         while(input != 0) {
-            int digit = input % 10;
+            long digit = input % 10;
             reversed = (reversed * 10) + digit;
             input /= 10;
         }
@@ -19,8 +19,8 @@ public class AddTwoNumbers {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        int num1 = 0;
-        int num2 = 0;
+        long  num1 = 0;
+        long num2 = 0;
         while (l1.next != null) {
             num1 = (num1 * 10) + l1.val;
             l1 = l1.next;
@@ -40,16 +40,16 @@ public class AddTwoNumbers {
         num2 = reverse(num2);
 
         //total of both values
-        int sum = num1 + num2;
+        long sum = num1 + num2;
 
         //Remove the last int and add it to list node
-        int firstNum = sum % 10;
+        long firstNum = sum % 10;
         sum /= 10;
-        ListNode ans = new ListNode(firstNum);
+        ListNode ans = new ListNode((int) firstNum);
         ListNode headCopy = ans;
         while (sum != 0) {
-            int value = sum % 10;
-            ans.next = new ListNode(value);
+            long value = sum % 10;
+            ans.next = new ListNode((int) value);
             ans = ans.next;
             sum /= 10;
         }
@@ -57,13 +57,19 @@ public class AddTwoNumbers {
     }
 
     public static void main(String[] args) {
-        ListNode one3 = new ListNode(3, null);
-        ListNode one2 = new ListNode(4, one3);
-        ListNode one1 = new ListNode(2, one2);
 
-        ListNode two3 = new ListNode(4, null);
-        ListNode two2 = new ListNode(6, two3);
-        ListNode two1 = new ListNode(5, two2);
+        ListNode one1 = new ListNode(9, null);
+
+        ListNode two10 = new ListNode(9, null);
+        ListNode two9 = new ListNode(9, two10);
+        ListNode two8 = new ListNode(9, two9);
+        ListNode two7 = new ListNode(9, two8);
+        ListNode two6 = new ListNode(9, two7);
+        ListNode two5 = new ListNode(9, two6);
+        ListNode two4 = new ListNode(9, two5);
+        ListNode two3 = new ListNode(9, two4);
+        ListNode two2 = new ListNode(9, two3);
+        ListNode two1 = new ListNode(1, two2);
 
         System.out.println(addTwoNumbers(one1, two1));
     }
