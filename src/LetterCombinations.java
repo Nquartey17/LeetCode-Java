@@ -37,8 +37,17 @@ public class LetterCombinations {
             strLetters.append(letter.charAt(0));
         }
 
-        //step 2: cycle through last letters
+        HashSet<String> set = new HashSet<>();
 
+        //step 2: cycle through last letters, add them to ans array
+        //The idea for this is getting somewhere but I need to make adjustments
+        for (int i = digits.length() - 1; i >= 0; i--) {
+            String lastNumLetters = map.get(digits.charAt(digits.length()-1)); //last letters
+                for (int j = 0; j < lastNumLetters.length();j++) { //cycling through last letters
+                    strLetters.setCharAt(i, lastNumLetters.charAt(j));
+                    set.add(String.valueOf(strLetters));
+                }
+        }
 
         //step 3: reuse previous inputs and cycle through letters unchanged
 
