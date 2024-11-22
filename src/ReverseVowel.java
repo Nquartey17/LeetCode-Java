@@ -3,26 +3,24 @@ import java.util.Arrays;
 
 public class ReverseVowel {
     public static String reverseVowels(String s) {
-        StringBuilder strCopy = new StringBuilder(s);
         ArrayList<Character> vowels = new ArrayList<>(Arrays.asList('a','e', 'i','o','u','A','E','I','O','U'));
+        char[] array = s.toCharArray();
         int start = 0; //first letter
         int end = s.length() - 1; //last letter
         while (start < end) {
-            if (vowels.contains(s.charAt(start))) {
-                if (vowels.contains(s.charAt(end))) {
-                    char temp = strCopy.charAt(start); //I
-                    strCopy.setCharAt(start, s.charAt(end));
-                    strCopy.setCharAt(end, temp);
-                    start++;
-                    end--;
-                } else {
-                    end--;
-                }
-            } else {
+            if (vowels.contains(array[start]) && vowels.contains(array[end])) {
+               char temp = array[start];
+               array[start] = array[end];
+               array[end] = temp;
+               start++;
+               end--;
+            } else if (!vowels.contains(array[start])) {
                 start++;
+            } else {
+                end--;
             }
         }
-        return strCopy.toString();
+        return new String(array);
     }
 
     public static void main(String[] args) {
