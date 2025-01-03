@@ -3,7 +3,6 @@ public class IsSubsequence {
     public static boolean isSubsequence(String s, String t) {
         //don't use contains because it might not be in order
         //Avoid nested for loop
-
         int i = 0;
         int j = 0;
         while (i < s.length() && j < t.length()) {
